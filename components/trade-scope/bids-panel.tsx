@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CloudArrowUpIcon } from "@heroicons/react/24/outline";
-import { DocumentIcon } from "@heroicons/react/24/solid";
+import { CloudArrowUpIcon, DocumentIcon } from "@/components/icons";
 
 const acceptedTypes = ["application/pdf", "text/csv", "message/rfc822"];
 

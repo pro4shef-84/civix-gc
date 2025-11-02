@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import { EnvelopeIcon } from "@/components/icons";
 import clsx from "classnames";
 
 import type { InvitationSummary } from "@/lib/server/rfq";

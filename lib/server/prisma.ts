@@ -1,12 +1,32 @@
-import { PrismaClient } from "@prisma/client";
+const message =
+  "Prisma client is not configured for this demo environment. Configure a database connection before using data mutations.";
 
-declare global {
-  // eslint-disable-next-line no-var
-  var prisma: PrismaClient | undefined;
+async function reject<T = never>(): Promise<T> {
+  throw new Error(message);
 }
 
-export const prisma = global.prisma ?? new PrismaClient();
-
-if (process.env.NODE_ENV !== "production") {
-  global.prisma = prisma;
-}
+export const prisma = {
+  project: {
+    findMany: reject,
+    create: reject
+  },
+  tradeScope: {
+    findUnique: reject,
+    create: reject
+  },
+  levelingSheet: {
+    findFirst: reject
+  },
+  invitation: {
+    findMany: reject,
+    create: reject
+  },
+  bidDocument: {
+    create: reject,
+    update: reject
+  },
+  parsedLine: {
+    update: reject
+  },
+  $transaction: reject
+};

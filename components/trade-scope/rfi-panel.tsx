@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
+import { ChatBubbleLeftRightIcon } from "@/components/icons";
 
 type DraftQuestion = {
   toSubcontractor: string;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
+import { ArrowDownTrayIcon } from "@/components/icons";
 
 import type { LevelingMatrix } from "@/lib/server/leveling";
 import type { TradeScopeSnapshot } from "@/lib/server/trade-scopes";
