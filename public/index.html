@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Civix GC • Bid-Leveling Demo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="logo">Civix GC</div>
+      <nav class="main-nav">
+        <button id="nav-projects" class="nav-button" data-view="projects">Projects</button>
+        <button id="nav-trade-scope" class="nav-button" data-view="trade-scope" disabled>Trade Scope</button>
+      </nav>
+      <div class="status-pill" id="clock"></div>
+    </header>
+    <main id="app"></main>
+    <template id="toast-template">
+      <div class="toast">
+        <span class="toast-message"></span>
+        <button class="toast-close" aria-label="Dismiss notification">×</button>
+      </div>
+    </template>
+    <div id="toast-root"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

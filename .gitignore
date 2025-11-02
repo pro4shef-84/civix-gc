@@ -1,9 +1,3 @@
-node_modules
-.next
-.env
-.env.local
-npm-debug.log*
+node_modules/
 .DS_Store
-.idea
-.vscode
-.prisma
+npm-debug.log*

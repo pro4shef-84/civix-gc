@@ -1,59 +1,68 @@
-# Civix GC — Preconstruction Bid Leveling Platform
+# Civix GC — Preconstruction Bid Leveling Demo
 
-This repository contains the groundwork for Civix GC's preconstruction toolkit. The MVP delivers the core
-bid-leveling workflow outlined in the product brief: upload subcontractor bids, parse and normalize line items,
-map CSI codes, highlight gaps/overlaps, and manage outreach through an RFQ tracker and RFI log.
+This repository provides an offline-friendly demo of Civix GC's preconstruction workflow. It ships a
+self-contained Node.js server that serves a rich single-page experience for bid uploads, leveling,
+RFQ tracking, RFIs, and export snapshots without requiring any third-party npm dependencies.
 
-## Tech Stack
+The goal is to make the product brief tangible even in restricted environments where installing
+packages from the public npm registry is blocked.
 
-- **Next.js 14** with the App Router and TypeScript
-- **Tailwind CSS** for rapid UI composition
-- **Prisma** ORM connected to **PostgreSQL**
-- **React Query**, **React Hook Form**, and **Zod** for future form workflows
-- Placeholder hooks for S3 file storage, email nudges, and LLM-backed parsing workers
+## What's Included
 
-## Getting Started
+- **Projects overview** with bid due dates, invited scopes, and invitation progress.
+- **Trade scope workspace** featuring bids, leveled comparison matrix, RFQ tracker, RFIs, and CSV export.
+- **Interactive actions** for uploading bids (metadata only), marking parse completion, updating invite
+  statuses, logging RFIs, queuing nudges, and downloading leveling snapshots.
+- **Persistent sample data** stored in `data/sample-data.json` that is updated as you interact with the UI.
 
-> Dependencies are declared in `package.json`. Installing them requires access to the public npm registry.
+## Running the Demo
 
-```bash
-npm install
-cp .env.example .env
-npm run dev
-```
-
-Run Prisma migrations once you have a Postgres database available:
+All scripts rely only on Node's standard library. No additional packages are required.
 
 ```bash
-npm run prisma:migrate
+npm install    # installs nothing but ensures a package-lock.json for reproducibility
+npm run dev    # starts the local server on http://localhost:3000
 ```
 
-Seed data is returned automatically by server utilities when the database is empty so the UI remains functional while
-infrastructure is bootstrapped.
+Use `npm run lint` to verify the sample dataset structure:
 
-## Project Structure
-
-```
-app/                # Next.js routes (App Router)
-  page.tsx          # Projects overview
-  trade-scopes/     # Trade scope workspace with tabs for bids, leveling, RFQ, RFIs, exports
-components/         # UI components, domain-specific panels, and layout pieces
-lib/server/         # Data access helpers (Prisma + demo fallbacks)
-prisma/schema.prisma# Database schema reflecting the data model
+```bash
+npm run lint
 ```
 
-Key features implemented:
+The command simply parses `data/sample-data.json` and reports success or structural issues.
 
-- **Projects dashboard** – snapshot of active pursuits with progress metrics.
-- **Trade scope workspace** – tabbed layout surfacing bid uploads, leveled matrix, RFQ tracker, RFIs, and exports.
-- **Leveling matrix** – interactive grid with filters for gaps, overlaps, and low-confidence items.
-- **RFQ tracker** – Kanban-style grouping of subcontractors with nudge action placeholders.
-- **Export tools** – instant CSV/XLSX generation in-browser for sharing snapshots.
+## Project Layout
 
-## Next Steps
+```
+public/             # Static assets and the browser application (index.html, styles, app logic)
+data/sample-data.json
+                    # Seed + persisted demo data (projects, trade scopes, bids, RFQs, RFIs, events)
+server.mjs          # Minimal Node HTTP server exposing JSON APIs and serving the SPA
+scripts/check.mjs   # Validates the sample data file (used by npm run lint)
+```
 
-- Wire up authentication (NextAuth) with organization-scoped access control.
-- Implement file uploads to S3 and trigger the PDF parsing worker.
-- Persist normalization, CSI auto-suggestions, and vendor override rules.
-- Build email integrations (Postmark/Sendgrid) for nudges and RFI notifications.
-- Replace demo fallbacks with live Prisma queries once migrations run.
+## API Surface
+
+The demo server exposes lightweight JSON endpoints that mutate the sample data on disk:
+
+- `GET /api/state` – returns projects, trade scopes, bids, invitations, RFIs, and event history.
+- `POST /api/trade-scopes/:id/bids` – register a new bid upload for a subcontractor.
+- `POST /api/bids/:id/parse` – mark a bid as parsed and auto-generate placeholder line items.
+- `POST /api/trade-scopes/:id/invitations/:invitationId/status` – update invite status + last touch.
+- `POST /api/trade-scopes/:id/rfis` – log a new clarification and target subcontractors.
+- `POST /api/rfis/:id/respond` – append a subcontractor response.
+- `POST /api/trade-scopes/:id/nudge` – record that reminder emails were queued.
+
+Each mutation writes back to `data/sample-data.json` so refreshing the browser retains changes.
+
+## Extending the Demo
+
+- Wire up actual file handling by saving uploads to disk and storing metadata alongside the bid record.
+- Expand the leveling matrix to support manual overrides and normalization rules.
+- Implement authentication and multi-org scoping by storing user sessions and filtering state per org.
+- Add CSV/XLSX export endpoints that stream files from the server instead of client-side generation.
+- Integrate a parsing worker (Python/Node) that produces the parsed line items for real bid documents.
+
+The current approach optimizes for environments with strict network policies while keeping the
+product vision interactive and demonstrable.

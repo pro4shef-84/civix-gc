@@ -1,0 +1,283 @@
+{
+  "org": {
+    "id": "org-demo",
+    "name": "Civix General Contracting",
+    "billingPlan": "demo"
+  },
+  "users": [
+    { "id": "user-001", "orgId": "org-demo", "name": "Avery Chen", "email": "avery@civixgc.com", "role": "estimator" },
+    { "id": "user-002", "orgId": "org-demo", "name": "Morgan Patel", "email": "morgan@civixgc.com", "role": "chief_estimator" }
+  ],
+  "projects": [
+    {
+      "id": "proj-001",
+      "orgId": "org-demo",
+      "name": "Downtown Arts Center",
+      "bidDueAt": "2024-08-15T21:00:00Z",
+      "createdBy": "user-001",
+      "tradeScopeIds": ["ts-001", "ts-002"]
+    },
+    {
+      "id": "proj-002",
+      "orgId": "org-demo",
+      "name": "Harborview Library Renovation",
+      "bidDueAt": "2024-09-03T20:00:00Z",
+      "createdBy": "user-001",
+      "tradeScopeIds": ["ts-003"]
+    }
+  ],
+  "tradeScopes": [
+    {
+      "id": "ts-001",
+      "projectId": "proj-001",
+      "name": "Division 03 - Concrete",
+      "csiDivision": "03",
+      "bidIds": ["bid-001", "bid-002", "bid-003"],
+      "invitationIds": ["invite-001", "invite-002", "invite-003", "invite-004"],
+      "rfiIds": ["rfi-001", "rfi-002"],
+      "levelingRows": [
+        {
+          "id": "scope-001",
+          "description": "Foundations & Footings",
+          "unit": "LS",
+          "subs": {
+            "sub-001": { "price": 125000, "status": "included", "notes": "Includes excavation" },
+            "sub-002": { "price": 132000, "status": "included" },
+            "sub-003": { "price": null, "status": "missing" }
+          }
+        },
+        {
+          "id": "scope-002",
+          "description": "Slab on Grade",
+          "unit": "SF",
+          "quantity": 18500,
+          "subs": {
+            "sub-001": { "price": 4.6, "status": "included" },
+            "sub-002": { "price": 4.8, "status": "included" },
+            "sub-003": { "price": 5.1, "status": "included" }
+          }
+        },
+        {
+          "id": "scope-003",
+          "description": "Structural Columns",
+          "unit": "EA",
+          "quantity": 42,
+          "subs": {
+            "sub-001": { "price": 2100, "status": "included" },
+            "sub-002": { "price": null, "status": "missing" },
+            "sub-003": { "price": 2180, "status": "included" }
+          }
+        },
+        {
+          "id": "scope-004",
+          "description": "Elevated Deck Formwork",
+          "unit": "SF",
+          "quantity": 15200,
+          "subs": {
+            "sub-001": { "price": 6.1, "status": "included" },
+            "sub-002": { "price": 6.6, "status": "included", "notes": "Includes reshoring" },
+            "sub-003": { "price": 6.4, "status": "included" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ts-002",
+      "projectId": "proj-001",
+      "name": "Division 09 - Finishes",
+      "csiDivision": "09",
+      "bidIds": ["bid-004", "bid-005"],
+      "invitationIds": ["invite-005", "invite-006", "invite-007"],
+      "rfiIds": [],
+      "levelingRows": [
+        {
+          "id": "scope-101",
+          "description": "Drywall Partitions",
+          "unit": "SF",
+          "quantity": 12500,
+          "subs": {
+            "sub-005": { "price": 7.4, "status": "included" },
+            "sub-006": { "price": null, "status": "missing" }
+          }
+        },
+        {
+          "id": "scope-102",
+          "description": "Acoustic Ceilings",
+          "unit": "SF",
+          "quantity": 9800,
+          "subs": {
+            "sub-005": { "price": 4.2, "status": "included" },
+            "sub-006": { "price": 4.6, "status": "included" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ts-003",
+      "projectId": "proj-002",
+      "name": "Division 26 - Electrical",
+      "csiDivision": "26",
+      "bidIds": ["bid-006"],
+      "invitationIds": ["invite-008", "invite-009"],
+      "rfiIds": ["rfi-003"],
+      "levelingRows": [
+        {
+          "id": "scope-201",
+          "description": "Lighting Fixtures",
+          "unit": "LS",
+          "subs": {
+            "sub-007": { "price": 86000, "status": "included" },
+            "sub-008": { "price": 91000, "status": "included" }
+          }
+        }
+      ]
+    }
+  ],
+  "subcontractors": [
+    { "id": "sub-001", "orgId": "org-demo", "name": "Acme Concrete", "email": "bids@acmeconcrete.com", "phone": "503-555-1001", "trades": ["03"] },
+    { "id": "sub-002", "orgId": "org-demo", "name": "Northwest Formworks", "email": "estimating@nwformworks.com", "phone": "503-555-1130", "trades": ["03"] },
+    { "id": "sub-003", "orgId": "org-demo", "name": "Solid Foundations LLC", "email": "proposals@solidfoundations.com", "phone": "971-555-4470", "trades": ["03"] },
+    { "id": "sub-004", "orgId": "org-demo", "name": "Cascade Rebar", "email": "estimating@cascaderebar.com", "phone": "503-555-7733", "trades": ["03"] },
+    { "id": "sub-005", "orgId": "org-demo", "name": "Precision Interiors", "email": "bids@precisioninteriors.com", "phone": "971-555-2202", "trades": ["09"] },
+    { "id": "sub-006", "orgId": "org-demo", "name": "FinishCraft", "email": "estimating@finishcraft.com", "phone": "971-555-1188", "trades": ["09"] },
+    { "id": "sub-007", "orgId": "org-demo", "name": "Brightline Electric", "email": "estimating@brightlineelectric.com", "phone": "971-555-8700", "trades": ["26"] },
+    { "id": "sub-008", "orgId": "org-demo", "name": "Harbor City Power", "email": "proposals@harborcitypower.com", "phone": "971-555-8642", "trades": ["26"] }
+  ],
+  "invitations": [
+    { "id": "invite-001", "tradeScopeId": "ts-001", "subcontractorId": "sub-001", "status": "submitted", "lastContactedAt": "2024-07-28T17:14:00Z" },
+    { "id": "invite-002", "tradeScopeId": "ts-001", "subcontractorId": "sub-002", "status": "submitted", "lastContactedAt": "2024-07-30T16:10:00Z" },
+    { "id": "invite-003", "tradeScopeId": "ts-001", "subcontractorId": "sub-003", "status": "interested", "lastContactedAt": "2024-07-27T18:45:00Z" },
+    { "id": "invite-004", "tradeScopeId": "ts-001", "subcontractorId": "sub-004", "status": "invited", "lastContactedAt": null },
+    { "id": "invite-005", "tradeScopeId": "ts-002", "subcontractorId": "sub-005", "status": "submitted", "lastContactedAt": "2024-07-29T21:03:00Z" },
+    { "id": "invite-006", "tradeScopeId": "ts-002", "subcontractorId": "sub-006", "status": "needs_clarification", "lastContactedAt": "2024-07-31T18:25:00Z" },
+    { "id": "invite-007", "tradeScopeId": "ts-002", "subcontractorId": "sub-004", "status": "invited", "lastContactedAt": null },
+    { "id": "invite-008", "tradeScopeId": "ts-003", "subcontractorId": "sub-007", "status": "submitted", "lastContactedAt": "2024-07-26T17:40:00Z" },
+    { "id": "invite-009", "tradeScopeId": "ts-003", "subcontractorId": "sub-008", "status": "no_bid", "lastContactedAt": "2024-07-25T19:18:00Z" }
+  ],
+  "bids": [
+    {
+      "id": "bid-001",
+      "tradeScopeId": "ts-001",
+      "subcontractorId": "sub-001",
+      "fileName": "Acme Concrete - Base Bid.pdf",
+      "uploadedAt": "2024-07-28T17:14:00Z",
+      "status": "parsed",
+      "total": 452600,
+      "parsedLines": [
+        { "id": "line-001", "description": "Foundations & Footings", "qty": 1, "unit": "LS", "price": 125000, "confidence": 0.96, "csiCode": "03 30 00" },
+        { "id": "line-002", "description": "Slab on Grade", "qty": 18500, "unit": "SF", "price": 85100, "confidence": 0.91, "csiCode": "03 30 00" },
+        { "id": "line-003", "description": "Elevated Deck Formwork", "qty": 15200, "unit": "SF", "price": 92720, "confidence": 0.88, "csiCode": "03 11 00" }
+      ]
+    },
+    {
+      "id": "bid-002",
+      "tradeScopeId": "ts-001",
+      "subcontractorId": "sub-002",
+      "fileName": "Northwest Formworks - Proposal.pdf",
+      "uploadedAt": "2024-07-30T16:10:00Z",
+      "status": "parsed",
+      "total": 468200,
+      "parsedLines": [
+        { "id": "line-004", "description": "Foundations & Footings", "qty": 1, "unit": "LS", "price": 132000, "confidence": 0.9, "csiCode": "03 30 00" },
+        { "id": "line-005", "description": "Elevated Deck Formwork", "qty": 15200, "unit": "SF", "price": 100320, "confidence": 0.87, "csiCode": "03 11 00" }
+      ]
+    },
+    {
+      "id": "bid-003",
+      "tradeScopeId": "ts-001",
+      "subcontractorId": "sub-003",
+      "fileName": "Solid Foundations - Budget.xls",
+      "uploadedAt": "2024-07-31T01:24:00Z",
+      "status": "processing",
+      "total": null,
+      "parsedLines": []
+    },
+    {
+      "id": "bid-004",
+      "tradeScopeId": "ts-002",
+      "subcontractorId": "sub-005",
+      "fileName": "Precision Interiors - Bid.pdf",
+      "uploadedAt": "2024-07-29T21:03:00Z",
+      "status": "parsed",
+      "total": 289400,
+      "parsedLines": [
+        { "id": "line-006", "description": "Drywall Partitions", "qty": 12500, "unit": "SF", "price": 92500, "confidence": 0.89, "csiCode": "09 22 16" },
+        { "id": "line-007", "description": "Acoustic Ceilings", "qty": 9800, "unit": "SF", "price": 41160, "confidence": 0.85, "csiCode": "09 51 13" }
+      ]
+    },
+    {
+      "id": "bid-005",
+      "tradeScopeId": "ts-002",
+      "subcontractorId": "sub-006",
+      "fileName": "FinishCraft - Proposal.msg",
+      "uploadedAt": "2024-07-31T02:16:00Z",
+      "status": "needs_review",
+      "total": null,
+      "parsedLines": []
+    },
+    {
+      "id": "bid-006",
+      "tradeScopeId": "ts-003",
+      "subcontractorId": "sub-007",
+      "fileName": "Brightline Electric - Bid.pdf",
+      "uploadedAt": "2024-07-26T17:40:00Z",
+      "status": "parsed",
+      "total": 318500,
+      "parsedLines": [
+        { "id": "line-008", "description": "Lighting Fixtures", "qty": 1, "unit": "LS", "price": 86000, "confidence": 0.92, "csiCode": "26 51 00" }
+      ]
+    }
+  ],
+  "rfis": [
+    {
+      "id": "rfi-001",
+      "tradeScopeId": "ts-001",
+      "question": "Please confirm reinforcing steel grade for foundations?",
+      "toSubcontractorIds": ["sub-001", "sub-002"],
+      "status": "open",
+      "createdAt": "2024-07-29T19:05:00Z",
+      "responses": [
+        {
+          "id": "rfi-001-resp-001",
+          "fromSubcontractorId": "sub-001",
+          "body": "Using Grade 60 per structural notes.",
+          "respondedAt": "2024-07-29T22:40:00Z"
+        }
+      ]
+    },
+    {
+      "id": "rfi-002",
+      "tradeScopeId": "ts-001",
+      "question": "Can you breakout pricing for pump hours?",
+      "toSubcontractorIds": ["sub-002"],
+      "status": "resolved",
+      "createdAt": "2024-07-30T18:15:00Z",
+      "responses": [
+        {
+          "id": "rfi-002-resp-001",
+          "fromSubcontractorId": "sub-002",
+          "body": "Included 12 pump hours in base scope.",
+          "respondedAt": "2024-07-31T17:10:00Z"
+        }
+      ]
+    },
+    {
+      "id": "rfi-003",
+      "tradeScopeId": "ts-003",
+      "question": "Fixture schedule references Rev B drawings. Please confirm availability.",
+      "toSubcontractorIds": ["sub-007"],
+      "status": "open",
+      "createdAt": "2024-07-27T21:30:00Z",
+      "responses": []
+    }
+  ],
+  "events": [
+    {
+      "id": "event-001",
+      "tradeScopeId": "ts-001",
+      "type": "nudge_sent",
+      "payload": { "invitationId": "invite-003" },
+      "createdAt": "2024-07-29T15:00:00Z"
+    }
+  ]
+}
