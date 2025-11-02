@@ -22,6 +22,7 @@ All scripts rely only on Node's standard library. No additional packages are req
 ```bash
 npm install    # installs nothing but ensures a package-lock.json for reproducibility
 npm run dev    # starts the local server on http://localhost:3000
+npm test       # runs API smoke tests against an in-memory server
 ```
 
 Use `npm run lint` to verify the sample dataset structure:
