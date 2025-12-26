@@ -1,0 +1,9 @@
+BuildRight Interiors Bid
+Project: Sample High School
+Trade: Drywall
+Base Bid: $410,000
+Includes: studs, drywall, taping
+Exclusions: painting, insulation
+Assumptions: excludes weekend work
+Alternates: None
+Schedule: 60 days, needs two-week notice

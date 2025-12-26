@@ -1,0 +1,9 @@
+Acme Walls Proposal
+Project: Sample High School
+Trade: Drywall
+Base Bid: $450,000
+Includes: metal studs, drywall installation, taping, painting primer
+Exclusions: final paint, firestopping
+Assumptions: standard 8ft walls, one mobilization
+Alternates: Add sound attenuation +$25,000
+Schedule: 45 days, can start after site is ready
